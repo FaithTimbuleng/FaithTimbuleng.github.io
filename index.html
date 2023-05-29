@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Faith Timbuleng</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 36px;
+			font-weight: normal;
+		}
+
+		nav {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		nav a {
+			color: #fff;
+			margin: 0 10px;
+			text-decoration: none;
+			font-size: 18px;
+		}
+
+		nav a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Contoh Header</h1>
+		<nav>
+			<a href="#">Beranda</a>
+			<a href="#">Tentang</a>
+			<a href="#">search</a>
+		</nav>
+	</header>
+	<style>
+		.carousel {
+			width: 80%;
+			margin: auto;
+			position: relative;
+		}
+
+		.carousel img {
+			width: 100%;
+			height: auto;
+		}
+
+		.carousel .prev,
+		.carousel .next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 25px;
+			font-weight: bold;
+			color: #fff;
+			cursor: pointer;
+			z-index: 2;
+		}
+
+		.carousel .prev {
+			left: 0;
+		}
+
+		.carousel .next {
+			right: 0;
+		}
+
+		.carousel .indicator {
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			z-index: 2;
+		}
+
+		.carousel .indicator button {
+			width: 10px;
+			height: 10px;
+			border: none;
+			border-radius: 50%;
+			margin: 5px;
+			cursor: pointer;
+			background-color: #ccc;
+			transition: background-color 0.3s;
+		}
+
+		.carousel .indicator button.active {
+			background-color: #007bff;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			$('.prev').click(function() {
+				slideIndex -= 1;
+				showSlides(slideIndex);
+			});
+
+			$('.next').click(function() {
+				slideIndex += 1;
+				showSlides(slideIndex);
+			});
+
+			$('.indicator button').click(function() {
+				slideIndex = $(this).data('slide');
+				showSlides(slideIndex);
+			});
+
+			function showSlides(n) {
+				var slides = $('.carousel img');
+				var indicators = $('.indicator button');
+
+				if (n > slides.length) {
+					slideIndex = 1;
+				}
+				if (n < 1) {
+					slideIndex = slides.length;
+				}
+
+				slides.hide();
+				slides.eq(slideIndex - 1).fadeIn();
+				indicators.removeClass('active');
+				indicators.eq(slideIndex - 1).addClass('active');
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<img src="OIP (1).jpeg">
+		<img src="OIP (2).jpeg">
+		<img src="OIP (3).jpeg">
+		<img src="OIP.jpeg">
+		<div class="prev">&#10094;</div>
+		<div class="next">&#10095;</div>
+		<div class="indicator">
+			<button class="active" data-slide="1"></button>
+			<button data-slide="2"></button>
+			<button data-slide="3"></button>
+			<button data-slide="4"></button>
+		</div>
+	</div>
+</body>
+</html>
